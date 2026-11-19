@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel principal | Relaxus</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="css/estilos.css" rel="stylesheet"></head>
+<body><div id="app-navbar"></div><div class="container-fluid"><div class="row">
+<div class="col-12 col-md-3 col-lg-2 p-0" id="app-sidebar"></div>
+<main class="col-12 col-md-9 col-lg-10 content-area p-4 p-xl-5 page-wrap"><div class="container-fluid px-0">
+<div id="dashboardAlert"></div>
+<div class="eyebrow mb-2">Resumen general</div><h1 class="page-title h2 mb-1">Panel principal</h1><p class="text-secondary mb-4">Bienvenido a Relaxus. Aquí puedes acceder a las tareas de gestión.</p>
+<div class="row g-3 mb-4" id="stats"></div>
+<div class="row g-4"><div class="col-12 col-xl-7"><section class="card h-100"><div class="card-body p-4"><div class="d-flex justify-content-between align-items-center mb-3"><h2 class="h5 fw-bold mb-0">Alertas de inventario</h2><a href="productos.html" class="small">Ver inventario</a></div><div id="stockAlerts"></div></div></section></div>
+<div class="col-12 col-xl-5"><section class="card h-100"><div class="card-body p-4"><h2 class="h5 fw-bold mb-3">Accesos directos</h2><div class="d-grid gap-2"><a class="btn btn-outline-secondary text-start py-3" href="productos.html"><i class="bi bi-disc me-2"></i>Consultar productos e inventario</a><a class="btn btn-outline-secondary text-start py-3" href="producto-form.html"><i class="bi bi-plus-circle me-2"></i>Crear un producto</a><a class="btn btn-outline-secondary text-start py-3" href="venta.html"><i class="bi bi-receipt me-2"></i>Registrar una venta</a><a class="btn btn-outline-secondary text-start py-3" href="historial.html"><i class="bi bi-bar-chart me-2"></i>Consultar historial y reportes</a></div></div></section></div></div></div>
+<div id="app-footer"></div></main></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script><script>if(requireAuth()){renderShell("panel.html");}</script><script> (async()=>{try{const p=await loadProducts(),s=getSales(),low=p.filter(x=>x.stock_actual<=3);document.querySelector("#stats").innerHTML=[["Productos registrados",p.length,"bi-disc"],["Unidades en inventario",p.reduce((a,x)=>a+Number(x.stock_actual),0),"bi-box-seam"],["Ventas registradas",s.length,"bi-receipt"],["Alertas de stock",low.length,"bi-exclamation-triangle"]].map(([t,n,i])=>`<div class="col-12 col-sm-6 col-xl-3"><div class="card h-100"><div class="card-body d-flex align-items-center gap-3"><div class="stat-icon"><i class="bi ${i} fs-5"></i></div><div><div class="text-secondary small">${t}</div><div class="fs-3 fw-bold">${n}</div></div></div></div></div>`).join("");document.querySelector("#stockAlerts").innerHTML=low.length?low.map(x=>`<div class="d-flex justify-content-between align-items-center py-2 border-bottom"><div><div class="fw-semibold">${x.nombre}</div><small class="text-secondary">${x.codigo}</small></div>${stockBadge(x.stock_actual)}</div>`).join(""):'<div class="alert alert-success mb-0">No hay productos con stock bajo o agotado.</div>';}catch(e){document.querySelector("#dashboardAlert").innerHTML=alertBox(e.message,"danger");}})();</script></body></html>

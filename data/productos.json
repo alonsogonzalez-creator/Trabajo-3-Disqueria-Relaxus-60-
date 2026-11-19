@@ -1,0 +1,42 @@
+[
+  {
+    "id_producto": 1,
+    "codigo": "VIN-0001",
+    "nombre": "Abbey Road - The Beatles",
+    "formato": "Vinilo",
+    "precio_venta": 29990,
+    "stock_actual": 5
+  },
+  {
+    "id_producto": 2,
+    "codigo": "CD-0001",
+    "nombre": "Thriller - Michael Jackson",
+    "formato": "CD",
+    "precio_venta": 12990,
+    "stock_actual": 8
+  },
+  {
+    "id_producto": 3,
+    "codigo": "CAS-0001",
+    "nombre": "Nevermind - Nirvana",
+    "formato": "Casete",
+    "precio_venta": 8990,
+    "stock_actual": 2
+  },
+  {
+    "id_producto": 4,
+    "codigo": "ACC-0001",
+    "nombre": "Paño de limpieza para vinilos",
+    "formato": "Accesorio",
+    "precio_venta": 3500,
+    "stock_actual": 15
+  },
+  {
+    "id_producto": 5,
+    "codigo": "VIN-0002",
+    "nombre": "The Dark Side of the Moon - Pink Floyd",
+    "formato": "Vinilo",
+    "precio_venta": 34990,
+    "stock_actual": 3
+  }
+]
